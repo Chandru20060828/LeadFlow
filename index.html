@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeadFlow — Smart Lead Organizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="eyebrow">CLIENT OUTREACH TOOL</div>
+      <h1>LeadFlow — Smart Lead Organizer</h1>
+      <p>Upload an LeadFlow JSON export and turn messy business data into a clean contact table.</p>
+    </header>
+
+    <section class="panel upload-panel">
+      <div class="step"><span>1</span><div><h2>Upload your JSON file</h2><p>Supports one business object or a list of businesses.</p></div></div>
+      <label class="dropzone" id="dropzone" for="jsonFile">
+        <span class="upload-icon">↑</span>
+        <strong>Choose a JSON file</strong>
+        <small>or drag and drop it here</small>
+        <input id="jsonFile" type="file" accept=".json,application/json" />
+      </label>
+      <div class="file-info" id="fileInfo">No file selected</div>
+      <div class="actions">
+        <button class="btn secondary" id="loadSample" type="button">Try sample data</button>
+        <button class="btn secondary" id="clearData" type="button">Clear</button>
+      </div>
+      <p class="hint">Your file is processed locally in this browser; it is not uploaded to a server.</p>
+    </section>
+
+    <section class="stats" id="stats" hidden>
+      <div class="stat"><span>Businesses</span><strong id="businessCount">0</strong></div>
+      <div class="stat"><span>Phone numbers</span><strong id="phoneCount">0</strong></div>
+      <div class="stat"><span>Websites</span><strong id="websiteCount">0</strong></div>
+      <div class="stat"><span>Instagram profiles</span><strong id="instagramCount">0</strong></div>
+    </section>
+
+    <section class="panel results-panel" id="resultsPanel" hidden>
+      <div class="results-heading">
+        <div class="step"><span>2</span><div><h2>Clean contact list</h2><p>Search, review, and export the details you need for outreach.</p></div></div>
+        <button class="btn primary" id="exportCsv" type="button">Export table as CSV ↓</button>
+      </div>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Search name, phone, city, category..." aria-label="Search businesses" />
+        <select id="categoryFilter" aria-label="Filter by category"><option value="">All categories</option></select>
+        <label class="check-label"><input type="checkbox" id="missingPhoneOnly" /> Missing phone only</label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name / Company</th>
+              <th>Contact number</th>
+              <th>Location</th>
+              <th>Website</th>
+              <th>Instagram</th>
+              <th>Products / Category</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="table-footer"><span id="resultCount">0 results</span><span>Tip: click a website or Instagram link to open it.</span></div>
+    </section>
+    <div class="empty-state" id="emptyState">
+      <div class="empty-art">JSON → TABLE</div>
+      <h3>Your cleaned leads will appear here</h3>
+      <p>Start by uploading the JSON file you downloaded from LeadFlow.</p>
+    </div>
+    <footer>LeadFlow — Smart Lead Organizer · Simple client lead management · No account required</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
